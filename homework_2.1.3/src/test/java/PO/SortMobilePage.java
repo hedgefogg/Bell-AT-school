@@ -20,7 +20,6 @@ public class SortMobilePage {
     public SortMobilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        //driver.get(URL);
     }
 
     private String checkBox = "//*[text()='%s']/ancestor::*[@class='LhMupC0dLR']";
@@ -28,31 +27,31 @@ public class SortMobilePage {
     @FindBy(how = How.XPATH, using = ("//*[@class='n-snippet-cell2__brand-name']"))
     List<WebElement> listOfWebElement;
 
-    @FindBy (how = How.XPATH, using = ("//span[text()='Вперед']/ancestor::a"))
+    @FindBy(how = How.XPATH, using = ("//span[text()='Вперед']/ancestor::a"))
     WebElement pageGo;
 
 
     public void clickCheckBox(String model) {
         new WebDriverWait(driver, 5).until(visibilityOfElementLocated(By.xpath(format(checkBox, model)))).click();
-        count=1;
+        count = 1;
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        while (count<=10){
+        while (count <= 10) {
             if (pageGo.isDisplayed()) {
                 try {
                     pageGo.click();
                     count++;
-                }catch (WebDriverException e){
+                } catch (WebDriverException e) {
                     break;
                 }
-            }else{
+            } else {
                 try {
                     System.out.println();
                     break;
-                }catch (NoSuchElementException f){
+                } catch (NoSuchElementException f) {
                     break;
                 }
             }

@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class MainTest {
     @Test
-    public void jsobArrayTest(){
+    public void jsonArrayTest() {
 
     }
 
@@ -21,19 +21,19 @@ public class MainTest {
                 .get("https://reqres.in/api/users?page=2")
                 .then()
                 .log().all()
-                .body("data.avatar",notNullValue())
-                .body("per_page",notNullValue())
-                .body("data.id",not(hasItem((nullValue()))))
+                .body("data.avatar", notNullValue())
+                .body("per_page", notNullValue())
+                .body("data.id", not(hasItem((nullValue()))))
                 .extract()
                 .response();
         JsonPath jsonNewUser = resp.jsonPath();
-        Assert.assertFalse(jsonNewUser.get("page").toString().isEmpty(),"page is null");
+        Assert.assertFalse(jsonNewUser.get("page").toString().isEmpty(), "page is null");
         jsonNewUser.getList("data.avatar")
-                .forEach(x->Assert.assertFalse(x.toString().isEmpty(),"data.avatar is null"));
+                .forEach(x -> Assert.assertFalse(x.toString().isEmpty(), "data.avatar is null"));
         List<String> a = jsonNewUser.getList("data.avatar");
-        for(String x : a){
+        for (String x : a) {
             Assert.assertTrue(x.contains("128.jpg"));
-            Assert.assertFalse(x.toString().isEmpty(),"data.avatar is null");
+            Assert.assertFalse(x.toString().isEmpty(), "data.avatar is null");
         }
         System.out.println(a);
 

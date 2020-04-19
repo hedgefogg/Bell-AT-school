@@ -14,22 +14,21 @@ public class WebDriverSettings {
     WebDriver chromeDriver;
 
     @BeforeEach
-    public void setUpYandexTest(){
+    public void setUpYandexTest() {
         WebDriverManager.chromedriver().setup();
-        //System.setProperty("webdriver.chrome.driver",System.getenv("CHROME_DRIVER"));
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--window-size=1920,1200");
+        options.addArguments("--disable-extensions");
         chromeDriver = new ChromeDriver();
         chromeDriver.manage().window().maximize();
         chromeDriver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
         chromeDriver.manage().timeouts().setScriptTimeout(40, TimeUnit.SECONDS);
-        chromeDriver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
+        chromeDriver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
 
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         chromeDriver.quit();
     }
 

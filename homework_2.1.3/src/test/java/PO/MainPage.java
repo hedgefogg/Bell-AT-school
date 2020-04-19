@@ -9,16 +9,17 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage {
     String URL = "https://market.yandex.ru/";
     private WebDriver driver;
-    public MainPage(WebDriver driver){
+
+    public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver=driver;
+        this.driver = driver;
         driver.get(URL);
     }
 
-    @FindBy(how = How.XPATH,using = ("//a[@href='/catalog--elektronika/54440']"))
+    @FindBy(how = How.XPATH, using = ("//a[@href='/catalog--elektronika/54440']"))
     WebElement linkElectro;
 
-    public SortEectroPage clickElectro(){
+    public SortEectroPage clickElectro() {
         linkElectro.click();
         return new SortEectroPage(driver);
     }

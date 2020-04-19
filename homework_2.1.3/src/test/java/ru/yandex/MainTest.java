@@ -9,24 +9,24 @@ import org.openqa.selenium.WebElement;
 
 public class MainTest extends WebDriverSettings {
 
-    private void son(int s){
+    private void son(int s) {
         try {
             Thread.sleep(s);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void checkTitle(){
+    public void checkTitle() {
         System.out.println("checkTitle");
-        MainPage mainPage=new MainPage(driver);
         String title = driver.getTitle();
         System.out.println(title);
         Assertions.assertTrue(title.contains("Яндекс.Маркет"));
     }
 
     @Test
-    public void checkModel(){
+    public void checkModel() {
         MainPage mainPage = new MainPage(driver);
         SortEectroPage sortEectroPage = new SortEectroPage(driver);
         SortMobilePage sortMobilePage = new SortMobilePage(driver);
@@ -35,9 +35,9 @@ public class MainTest extends WebDriverSettings {
         sortMobilePage.clickCheckBox("Xiaomi");
         son(5000);
         boolean check = false;
-        for (WebElement e: sortMobilePage.getListOfWebElement())
-            if(e.getText().equals("XIAOMI"))
-                check=true;
+        for (WebElement e : sortMobilePage.getListOfWebElement())
+            if (e.getText().equals("XIAOMI"))
+                check = true;
         Assertions.assertTrue(check);
     }
 

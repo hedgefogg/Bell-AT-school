@@ -10,14 +10,7 @@ public class SearchPage {
     private WebDriver chromeDriver;
     private List<WebElement> listOfWebElement;
 
-    public SearchPage(WebDriver chromeDriver){
-        this.chromeDriver=chromeDriver;
+    public SearchPage(WebDriver chromeDriver) {
+        this.chromeDriver = chromeDriver;
     }
-
-    public List<WebElement>getListOfWebElement() {
-        List<WebElement> listOfWebElement=chromeDriver.findElements(By.xpath("//*[@class='organic__url-text']/ancestor::a"));
-        return listOfWebElement;
-    }
-
-
 }

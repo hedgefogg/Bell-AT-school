@@ -13,12 +13,11 @@ public class WebDriverSettings {
     WebDriver driver;
 
     @BeforeEach
-    public void setupBellTest(){
+    public void setupBellTest() {
         WebDriverManager.chromedriver().setup();
 
-        //System.setProperty("webdriver.chrome.driver",System.getenv("CHROME_DRIVER"));
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--window-size=1920,1200");
+        options.addArguments("--disable-extensions");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
@@ -27,7 +26,7 @@ public class WebDriverSettings {
     }
 
     @AfterEach
-    public void closeBellTest(){
+    public void closeBellTest() {
         driver.quit();
     }
 }
